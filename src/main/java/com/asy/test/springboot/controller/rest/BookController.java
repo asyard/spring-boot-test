@@ -27,7 +27,7 @@ public class BookController {
         List<Book> books = bookService.getList();
         return books;
     }
-    @RequestMapping(value="/addbook",method = RequestMethod.GET)
+    @RequestMapping(value="/addbook",method = {RequestMethod.GET, RequestMethod.POST} )
     public void addBook(
     		@RequestParam(value = "id", required = false) String bookId,
             @RequestParam(value = "name", required = true) String bookName,

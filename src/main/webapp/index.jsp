@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add new book</title>
+  <title>Book Application</title>
 </head>
 <body>
-<form action="/addbook" method="post">
-  Id : <input type="input" name="id">           <br/>
-  Name : <input type="input" name="name"> <br/>
-  Author : <input type="input" name="author">               <br/>
-  Year : <input type="input" name="year">               <br/>
-  <input type="submit">
+<a href="/add.jsp">click to add a book</a>
+
+<a href="/books"> click to list books in json format</a>
+
+<a href="/search.jsp">click to search books</a>
+
 </form>
 </body>
 </html>
