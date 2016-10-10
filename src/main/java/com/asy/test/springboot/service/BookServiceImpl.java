@@ -51,4 +51,11 @@ public class BookServiceImpl implements BookService {
         return book;
     }
 
+    @Override
+    public List<Book> getByName(String name) {
+        logger.debug("Searching book with name : " + name);
+        List<Book> books = repository.listByName(name);
+        return books;
+    }
+
 }

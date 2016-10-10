@@ -56,13 +56,27 @@ public class BookController {
         return findEntityById(bookId);
     }
 
+    @RequestMapping(value = "/bookbyname", produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public ResponseEntity<?> bookbyname(@RequestParam(value = "bookName") String bookName) {
+        return findEntityByName(bookName);
+    }
+
     private ResponseEntity<?> findEntityById(String id) {
         Book book = bookService.get(id);
-
         if (book == null) {
             return new ResponseEntity("Book (" + id + ") not found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(book, HttpStatus.OK);
+    }
+
+    private ResponseEntity<?> findEntityByName(String name) {
+        List<Book> byName = bookService.getByName(name);
+        if (byName == null || byName.isEmpty()) {
+            return new ResponseEntity("Book (name:"  + name + ") not found", HttpStatus.NOT_FOUND);
+        }
+       //return new ResponseEntity(book, HttpStatus.OK);
+        return new ResponseEntity<Object>(byName, HttpStatus.OK);
     }
 
 }
